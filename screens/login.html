@@ -1,91 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Example System</title>
-  <link rel="stylesheet" href="css/login.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-  <div class="min-h-screen bg-gray-100 p-10 flex justify-center items-center">
-    <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
-      <div class="flex justify-center pb-8 mb-6 border-b-2">
-        <div class="w-1/2 h-1 bg-gray-300 rounded-full">
-          <div class="w-2/4 h-full bg-green-500 rounded-full"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - WBS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <main class="bg-gray-100 min-h-screen">
+      <div class="p-10 flex justify-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+          <div class="flex justify-center pb-8 mb-6 border-b-2">
+            <div class="w-1/2 h-1 bg-gray-300 rounded-full">
+              <div class="w-1/4 h-full bg-green-500 rounded-full"></div>
+            </div>
+          </div>
+          <h1 class="text-center text-xl font-semibold mb-4">Login</h1>
+          <form action="dashboard.html" method="POST" class="space-y-4">
+            <input
+              type="email"
+              name="email"
+              placeholder="E-mail address"
+              class="px-4 py-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-black"
+              required
+            />
+            <input
+              id="passwordInput"
+              type="password"
+              name="password"
+              placeholder="***********"
+              class="px-4 py-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-black"
+            />
+            <button
+              type="submit"
+              class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800"
+            >
+              Login
+            </button>
+          </form>
+          <p class="text-xs text-center text-gray-500 mt-4">
+            By signing up I agree to the
+            <a href="#" class="text-black underline">Terms & Conditions</a> and
+            to the <a href="#" class="text-black underline">Privacy Policy</a>.
+          </p>
         </div>
       </div>
-      <h1 class="text-center text-xl font-semibold mb-4">Login</h1>
-      <p class="text-sm text-center mb-6 text-gray-600">
-        It looks like there's already a profile associated with this e-mail address.
-      </p>
-      <form id="loginForm" class="space-y-4">
-        <div class="relative">
-          <input id="passwordInput" type="password" name="password" placeholder="Password" class="px-4 py-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-black">
-          <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-xs font-medium text-gray-600">
-            SHOW
-          </button>
-        </div>
-        <p id="errorMessage" class="text-red-500 text-sm"></p>
-        <button type="submit" class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800">
-          Continue
-        </button>
-      </form>
-      <p class="text-xs text-center text-gray-500 mt-4">
-        By signing up I agree to the 
-        <button class="text-black underline">Terms & Conditions</button> 
-        and to the 
-        <button class="text-black underline">Privacy Policy</button>.
-      </p>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById('loginForm').onsubmit = async function(event) {
-      event.preventDefault();
-      const password = document.getElementById('passwordInput').value;
-      const errorMessage = document.getElementById('errorMessage');
-
-      if (!password.trim()) {
-        errorMessage.textContent = "Please enter your password.";
-        return;
-      }
-
-      errorMessage.textContent = ""; // Clear previous error messages
-      console.log("Logging in with password:", password);
-
-      // Dummy fetch simulation
-      // Replace URL and add actual API handling here
-      fetch("https://jsonplaceholder.typicode.com/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ password }),
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log("Login successful", data);
-        // Navigate or perform actions after successful login
-      })
-      .catch(error => {
-        console.error("Error logging in:", error);
-        errorMessage.textContent = "Network error, please try again later.";
-      });
-    };
-
-    function togglePasswordVisibility() {
-      const passwordInput = document.getElementById('passwordInput');
-      const toggleButton = passwordInput.nextElementSibling;
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleButton.textContent = "HIDE";
-      } else {
-        passwordInput.type = "password";
-        toggleButton.textContent = "SHOW";
-      }
-    }
-  </script>
-</body>
+    </main>
+  </body>
 </html>
