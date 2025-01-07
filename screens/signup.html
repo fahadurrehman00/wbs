@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Will System</title>
-    <link rel="stylesheet" href="css/signup.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Example System</title>
+    <link rel="stylesheet" href="css/login.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
     <main>
-        <form action="dashboard.html" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone">
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Sign Up</button>
-        </form>
+      <div
+        class="min-h-screen bg-gray-100 p-10 flex justify-center items-center"
+      >
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+          <div class="flex justify-center pb-8 mb-6 border-b-2">
+            <div class="w-1/2 h-1 bg-gray-300 rounded-full">
+              <div class="w-1/4 h-full bg-green-500 rounded-full"></div>
+            </div>
+          </div>
+          <h1 class="text-center text-xl font-semibold mb-4">Login</h1>
+          <form action="dashboard.html" method="POST" class="space-y-4">
+            <input
+              type="email"
+              name="email"
+              placeholder="E-mail address"
+              class="px-4 py-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-black"
+              required
+            />
+            <button
+              type="submit"
+              class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800"
+            >
+              Continue With Email
+            </button>
+          </form>
+          <div class="text-center text-gray-400 my-3">or</div>
+          <button
+            type="button"
+            class="flex items-center justify-center border rounded-lg py-3 px-4 w-full hover:bg-gray-100 transition-colors mb-4"
+          >
+            <i class="fab fa-facebook-f mr-2 text-blue-600"></i> Continue With
+            Facebook
+          </button>
+          <button
+            type="button"
+            class="flex items-center justify-center border rounded-lg py-3 px-4 w-full hover:bg-gray-100 transition-colors"
+          >
+            <i class="fab fa-google mr-2 text-red-600"></i> Continue With Google
+          </button>
+          <p class="text-xs text-center text-gray-500 mt-4">
+            By signing up I agree to the
+            <a href="#" class="text-black underline">Terms & Conditions</a> and
+            to the <a href="#" class="text-black underline">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
