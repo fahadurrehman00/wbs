@@ -39,7 +39,7 @@
 
     <div class="flex h-screen">
       <!-- Sidebar -->
-      <nav
+      <!-- <nav
         id="sidebar"
         class="bg-gray-800 text-gray-100 w-64 h-full flex-shrink-0 transition-all duration-300 flex flex-col justify-between"
       >
@@ -142,7 +142,7 @@
             </li>
           </ul>
         </div>
-      </nav>
+      </nav> -->
 
       <!-- Main Content -->
       <main class="flex-1 p-6 overflow-hidden">
@@ -202,21 +202,21 @@
       });
 
       // Sidebar toggle
-      const sidebar = document.getElementById("sidebar");
-      const sidebarToggle = document.getElementById("sidebarToggle");
-      const toggleArrow = document.getElementById("toggleArrow");
-      const sidebarText = document.querySelectorAll(".sidebar-text");
+      // const sidebar = document.getElementById("sidebar");
+      // const sidebarToggle = document.getElementById("sidebarToggle");
+      // const toggleArrow = document.getElementById("toggleArrow");
+      // const sidebarText = document.querySelectorAll(".sidebar-text");
 
-      sidebarToggle.addEventListener("click", () => {
-        sidebar.classList.toggle("w-64");
-        sidebar.classList.toggle("w-16");
+      // sidebarToggle.addEventListener("click", () => {
+      //   sidebar.classList.toggle("w-64");
+      //   sidebar.classList.toggle("w-16");
 
-        toggleArrow.classList.toggle("rotate-180");
+      //   toggleArrow.classList.toggle("rotate-180");
 
-        sidebarText.forEach((text) => {
-          text.classList.toggle("hidden");
-        });
-      });
+      //   sidebarText.forEach((text) => {
+      //     text.classList.toggle("hidden");
+      //   });
+      // });
 
       // Dummy client data
       const clients = [
