@@ -23,14 +23,27 @@
       <div class="flex items-center">
         <img src="./assets/images/WBS-Logo.png" alt="Profile" class="h-14" />
       </div>
-      <div class="flex items-center gap-4">
-        <div class="flex items-center gap-2">
+      <div class="relative">
+        <button id="dropdownButton" class="flex items-center gap-2 transition">
           <img
             src="./assets/images/usere.png"
             alt="Profile"
             class="w-8 h-8 rounded-full"
           />
-          <span class="font-bold text-white">Josh Mikula</span>
+          <span class="font-medium text-gray-100">John Doe</span>
+        </button>
+        <!-- Dropdown -->
+        <div
+          id="dropdownMenu"
+          class="hidden absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg overflow-hidden"
+        >
+          <a
+            href="#"
+            id="myAccountLink"
+            class="block px-4 py-2 hover:bg-gray-200"
+            >My Account</a
+          >
+          <a href="#" class="block px-4 py-2 hover:bg-gray-200">Logout</a>
         </div>
       </div>
     </header>
@@ -728,6 +741,13 @@
         const list = document.getElementById(listId);
         list.removeChild(list.children[index]);
       }
+
+      // Dropdown toggle
+      const dropdownButton = document.getElementById("dropdownButton");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      dropdownButton.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("hidden");
+      });
     </script>
   </body>
 </html>
