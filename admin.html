@@ -65,13 +65,13 @@
   <body class="bg-gray-100 min-h-screen font-sans overflow-hidden">
     <!-- Navbar -->
     <header
-      class="bg-white shadow-lg px-6 py-4 flex justify-between items-center"
+      class="bg-[#F4A261] shadow-lg px-6 py-4 flex justify-between items-center"
     >
       <div class="flex items-center">
         <img src="./assets/images/WBS-Logo.png" alt="Profile" class="h-14" />
       </div>
       <div class="flex items-center gap-4">
-        <span class="text-gray-600 font-medium hidden md:block"
+        <span class="text-gray-100 font-medium hidden md:block"
           >Welcome Back!</span
         >
         <div class="flex items-center gap-2">
@@ -80,7 +80,7 @@
             alt="Profile"
             class="w-8 h-8 rounded-full"
           />
-          <span class="font-bold text-gray-600">Josh Mikula</span>
+          <span class="font-bold text-white">Josh Mikula</span>
         </div>
       </div>
     </header>
@@ -89,7 +89,7 @@
       <!-- Sidebar -->
       <nav
         id="sidebar"
-        class="bg-gray-800 text-gray-100 w-64 h-full flex-shrink-0 transition-all duration-300 flex flex-col justify-between"
+        class="bg-[#3A5F8F] text-gray-100 w-64 h-full flex-shrink-0 transition-all duration-300 flex flex-col justify-between"
       >
         <div>
           <div class="p-4">
@@ -132,19 +132,19 @@
           <!-- Cards -->
           <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div
-              class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition"
+              class="bg-[#E2E8F0] p-6 rounded-lg shadow hover:shadow-lg transition"
             >
               <h2 class="text-gray-600 font-bold">Total Clients</h2>
               <p class="text-gray-800 text-2xl mt-2">1,245</p>
             </div>
             <div
-              class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition"
+              class="bg-[#E2E8F0] p-6 rounded-lg shadow hover:shadow-lg transition"
             >
               <h2 class="text-gray-600 font-bold">Total Documents</h2>
               <p class="text-gray-800 text-2xl mt-2">3,678</p>
             </div>
             <div
-              class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition"
+              class="bg-[#E2E8F0] p-6 rounded-lg shadow hover:shadow-lg transition"
             >
               <h2 class="text-gray-600 font-bold">Total Recipients</h2>
               <p class="text-gray-800 text-2xl mt-2">567</p>
@@ -156,7 +156,7 @@
             <h2 class="text-gray-700 font-bold mb-4">Clients</h2>
             <div class="overflow-auto h-72">
               <table class="w-full border-collapse border border-gray-200">
-                <thead>
+                <thead class="sticky top-0 bg-gray-200 z-10 border border-gray-300">
                   <tr class="bg-gray-100">
                     <th class="border border-gray-300 p-2">ID</th>
                     <th class="border border-gray-300 p-2">First Name</th>
@@ -451,9 +451,12 @@
           <td class="border border-gray-300 p-2">${client.email}</td>
           <td class="border border-gray-300 p-2">${client.mobile}</td>
           <td class="border border-gray-300 p-2">${client.joiningDate}</td>
-          <td class="border border-gray-300 p-2">
-            <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Edit</button>
-            <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+          <td class="border border-gray-300 p-2 items-center flex justify-center gap-4">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+      <i class="fas fa-eye"></i> See Details
+    </button>
+    <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+      <i class="fas fa-trash-alt"></i></button>
           </td>`;
         clientTable.appendChild(row);
       });
