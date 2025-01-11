@@ -7,6 +7,10 @@
     <meta name="description" content="willbesent" />
     <meta name="keywords" content="willbesent" />
     <meta name="author" content="willbesent" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <!-- favicon -->
     <link href="assets/images/WBS-Logo.png" rel="shortcut icon" />
     <!-- Main Css -->
@@ -22,283 +26,184 @@
       <div class="flex items-center">
         <img src="./assets/images/WBS-Logo.png" alt="Profile" class="h-14" />
       </div>
-      <div class="relative z-50">
+      <div class="relative">
         <button id="dropdownButton" class="flex items-center gap-2 transition">
           <img
             src="./assets/images/usere.png"
             alt="Profile"
             class="w-8 h-8 rounded-full"
           />
-          <span class="font-medium text-gray-100">John Doe</span>
+          <span class="font-medium text-gray-100">Josh</span>
         </button>
         <!-- Dropdown -->
         <div
           id="dropdownMenu"
           class="hidden absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg overflow-hidden"
         >
-          <!-- <a href="#" id="myAccountLink" class="block px-4 py-2 hover:bg-gray-200 pointer"
+          <!-- <a
+            href="#"
+            id="myAccountLink"
+            class="block px-4 py-2 hover:bg-gray-200"
             >My Account</a
           > -->
-          <a href="#" class="block px-4 py-2 hover:bg-gray-200">Logout</a>
+          <a
+            href="#"
+            class="block px-4 py-2 hover:bg-gray-200 text-red-500 transition-all duration-300"
+          >
+            <i class="fas fa-sign-out-alt text-red-500"></i> Logout</a
+          >
         </div>
       </div>
     </header>
 
-    <div>
-      <!-- Dasboard Start -->
-      <main
-        id="dashboardContent"
-        class="flex-1 overflow-hidden tab-content active"
-      >
-        <section class="bg-[#E2E8F0] p-6">
-          <!-- Welcome Section -->
-          <div class="text-center bg-[#3A5F8F] text-white py-4 rounded mb-6">
-            <h1 class="text-xl font-semibold">Welcome back, Josh</h1>
-          </div>
+    <!-- Dasboard Start -->
+    <section class="bg-[#E2E8F0] p-6">
+      <!-- Welcome Section -->
+      <div class="text-center bg-[#3A5F8F] text-white py-4 rounded mb-6">
+        <h1 class="text-xl font-semibold">Welcome back, Josh</h1>
+      </div>
 
-          <!-- Main Grid Section -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- First Row -->
-            <div class="bg-white p-6 rounded shadow space-y-4">
-              <h2 class="text-lg font-semibold">Will</h2>
-              <div
-                class="border-2 border-dashed border-gray-300 rounded h-40 flex flex-col items-center justify-center text-gray-500 cursor-pointer"
-                onclick="document.getElementById('willUpload').click()"
-              >
-                <p>Drop your will here or click to upload.</p>
-                <p class="text-sm">Must be a Word or PDF document.</p>
-                <input
-                  type="file"
-                  id="willUpload"
-                  accept=".pdf,.doc,.docx"
-                  class="hidden"
-                  onchange="handleDocumentUpload('willDocuments')"
-                />
-              </div>
-              <div id="willDocuments" class="space-y-2"></div>
-            </div>
-
-            <div class="bg-white p-6 rounded shadow space-y-4">
-              <h2 class="text-lg font-semibold">Will Recipients</h2>
-              <ul id="willRecipients" class="space-y-2">
-                <li class="flex items-center space-x-2">
-                  <button
-                    class="bg-blue-500 text-white px-3 py-1 rounded"
-                    onclick="openPopup('willRecipients')"
-                  >
-                    +
-                  </button>
-                  <p>Click here to add recipient</p>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Second Row -->
-            <div class="bg-white p-6 rounded shadow space-y-4">
-              <h2 class="text-lg font-semibold">Power of Attorney</h2>
-              <div id="poaContainer" class="space-y-4">
-                <div
-                  class="border-2 border-dashed border-gray-300 rounded h-40 flex flex-col items-center justify-center text-gray-500 cursor-pointer"
-                  onclick="document.getElementById('poaUpload').click()"
-                >
-                  <p>
-                    Drop your power of attorney document here or click to
-                    upload.
-                  </p>
-                  <p class="text-sm">Must be a Word or PDF document.</p>
-                  <input
-                    type="file"
-                    id="poaUpload"
-                    accept=".pdf,.doc,.docx"
-                    class="hidden"
-                    onchange="handleDocumentUpload('poaDocuments')"
-                  />
-                </div>
-                <div id="poaDocuments" class="space-y-2"></div>
-              </div>
-            </div>
-
-            <div class="bg-white p-6 rounded shadow space-y-4">
-              <h2 class="text-lg font-semibold">
-                Power of Attorney Recipients
-              </h2>
-              <ul id="poaRecipients" class="space-y-2">
-                <li class="flex items-center space-x-2">
-                  <button
-                    class="bg-blue-500 text-white px-3 py-1 rounded"
-                    onclick="openPopup('poaRecipients')"
-                  >
-                    +
-                  </button>
-                  <p>Click here to add recipient</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Popup Modal -->
-          <div
-            id="popupModal"
-            class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden"
-          >
-            <div class="bg-white rounded shadow p-6 w-80">
-              <h3 class="text-lg font-semibold mb-4">Add Recipient</h3>
-              <form id="popupForm" class="space-y-4">
-                <div>
-                  <label for="recipientName" class="block text-sm font-medium"
-                    >Name</label
-                  >
-                  <input
-                    type="text"
-                    id="recipientName"
-                    class="w-full border-gray-300 rounded p-2"
-                    required
-                  />
-                </div>
-                <div>
-                  <label for="recipientMobile" class="block text-sm font-medium"
-                    >Mobile Number</label
-                  >
-                  <input
-                    type="text"
-                    id="recipientMobile"
-                    class="w-full border-gray-300 rounded p-2"
-                    required
-                  />
-                </div>
-                <div>
-                  <label for="recipientEmail" class="block text-sm font-medium"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    id="recipientEmail"
-                    class="w-full border-gray-300 rounded p-2"
-                    required
-                  />
-                </div>
-                <div class="flex justify-end space-x-4">
-                  <button
-                    type="button"
-                    class="bg-gray-300 px-4 py-2 rounded"
-                    onclick="closePopup()"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    class="bg-blue-500 text-white px-4 py-2 rounded"
-                  >
-                    Save
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
-      </main>
-      <!-- Dasboard End -->
-      <!-- My account Start -->
-      <!-- My Account Section -->
-      <!-- <main id="myAccountSection" class="flex-1 p-6 tab-content">
-        <section class="bg-white p-6 rounded-lg shadow">
-          <div class="flex flex-col items-center mb-6">
-            <div class="relative">
-              <img
-                id="profileImage"
-                src="./assets/images/usere.png"
-                alt="Profile"
-                class="w-24 h-24 rounded-full object-cover"
+      <!-- Main Grid Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- First Row -->
+        <div class="bg-white p-6 rounded shadow">
+          <h2 class="text-lg font-semibold">Will</h2>
+          <div class="flex gap-4 pt-4">
+            <div
+              class="border-2 border-dashed border-gray-300 rounded h-40 flex flex-col items-center justify-center text-gray-500 cursor-pointer w-1/4 p-4"
+              onclick="document.getElementById('willUpload').click()"
+            >
+              <i class="fas fa-plus"></i>
+              <p>Click to upload.</p>
+              <p class="text-sm">Must be a Word or PDF document.</p>
+              <input
+                type="file"
+                id="willUpload"
+                accept=".pdf,.doc,.docx"
+                class="hidden"
+                onchange="handleDocumentUpload('willDocuments')"
               />
+            </div>
+            <div id="willDocuments" class="space-y-2 w-3/4"></div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded shadow space-y-4">
+          <h2 class="text-lg font-semibold">Will Recipients</h2>
+          <ul id="willRecipients" class="space-y-2">
+            <li class="flex items-center space-x-2">
               <button
-                id="editProfileImage"
-                class="absolute top-0 left-0 bg-gray-800 text-white text-sm px-2 py-1 rounded-full"
+                class="bg-[#3A5F8F] text-white px-3 py-1 rounded hover:bg-[#F4A261] transition-all duration-300"
+                onclick="openPopup('willRecipients')"
               >
-                Edit
+                +
               </button>
-              <input id="fileInput" type="file" class="hidden" />
-            </div>
-          </div>
+              <p>Click here to add recipient</p>
+            </li>
+          </ul>
+        </div>
 
-          <div id="profileFields" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Second Row -->
+        <div class="bg-white p-6 rounded shadow space-y-4">
+          <h2 class="text-lg font-semibold">Power of Attorney</h2>
+          <div id="poaContainer" class="flex gap-4">
+            <div
+              class="border-2 border-dashed border-gray-300 rounded h-40 flex flex-col items-center justify-center text-gray-500 cursor-pointer w-1/4 p-4"
+              onclick="document.getElementById('poaUpload').click()"
+            >
+              <i class="fas fa-plus"></i>
+              <p>Click to upload.</p>
+              <p class="text-sm">Must be a Word or PDF document.</p>
+              <input
+                type="file"
+                id="poaUpload"
+                accept=".pdf,.doc,.docx"
+                class="hidden"
+                onchange="handleDocumentUpload('poaDocuments')"
+              />
+            </div>
+            <div id="poaDocuments" class="space-y-2 w-3/4"></div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded shadow space-y-4">
+          <h2 class="text-lg font-semibold">Power of Attorney Recipients</h2>
+          <ul id="poaRecipients" class="space-y-2">
+            <li class="flex items-center space-x-2">
+              <button
+                class="bg-[#3A5F8F] text-white px-3 py-1 rounded hover:bg-[#F4A261] transition-all duration-300"
+                onclick="openPopup('poaRecipients')"
+              >
+                +
+              </button>
+              <p>Click here to add recipient</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Popup Modal -->
+      <div
+        id="popupModal"
+        class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden"
+      >
+        <div class="bg-white rounded shadow p-6 w-80">
+          <h3 class="text-lg font-semibold mb-4">Add Recipient</h3>
+          <form id="popupForm" class="space-y-4">
             <div>
-              <label class="block text-gray-600">First Name</label>
+              <label for="recipientName" class="block text-sm font-medium"
+                >Name</label
+              >
               <input
                 type="text"
-                id="firstName"
-                class="w-full p-2 border border-gray-300 rounded-lg"
-                disabled
+                id="recipientName"
+                class="w-full border border-gray-300 rounded p-2"
+                required
               />
             </div>
             <div>
-              <label class="block text-gray-600">Last Name</label>
+              <label for="recipientMobile" class="block text-sm font-medium"
+                >Mobile Number</label
+              >
               <input
                 type="text"
-                id="lastName"
-                class="w-full p-2 border border-gray-300 rounded-lg"
-                disabled
+                id="recipientMobile"
+                class="w-full border border-gray-300 rounded p-2"
+                required
               />
             </div>
             <div>
-              <label class="block text-gray-600">Email</label>
+              <label for="recipientEmail" class="block text-sm font-medium"
+                >Email</label
+              >
               <input
                 type="email"
-                id="email"
-                class="w-full p-2 border border-gray-300 rounded-lg"
-                disabled
+                id="recipientEmail"
+                class="w-full border border-gray-300 rounded p-2"
+                required
               />
             </div>
-            <div>
-              <label class="block text-gray-600">Phone Number</label>
-              <input
-                type="text"
-                id="phoneNumber"
-                class="w-full p-2 border border-gray-300 rounded-lg"
-                disabled
-              />
-            </div>
-            <div>
-              <label class="block text-gray-600">Gender</label>
-              <select
-                id="gender"
-                class="w-full p-2 border border-gray-300 rounded-lg"
-                disabled
+            <div class="flex justify-end space-x-4">
+              <button
+                type="button"
+                class="bg-gray-300 px-4 py-2 rounded"
+                onclick="closePopup()"
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded"
+              >
+                Save
+              </button>
             </div>
-            <div>
-              <label class="block text-gray-600">Country</label>
-              <input
-                type="text"
-                id="country"
-                class="w-full p-2 border border-gray-300 rounded-lg"
-                disabled
-              />
-            </div>
-            <div>
-              <label class="block text-gray-600">Date of Birth</label>
-              <input
-                type="date"
-                id="dob"
-                class="w-full p-2 border border-gray-300 rounded-lg"
-                disabled
-              />
-            </div>
-          </div>
-          <div class="text-right mt-6">
-            <button
-              id="editProfileButton"
-              class="bg-blue-500 text-white px-4 py-2 rounded-lg"
-            >
-              Edit
-            </button>
-          </div>
-        </section>
-      </main> -->
-      <!-- My account End -->
-    </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dasboard End -->
 
     <!-- Contact Start -->
     <section id="contact" class="py-20 bg-gray-100">
@@ -492,7 +397,7 @@
               </div>
               <p class="text-gray-300 max-w-xs mt-6">
                 Will Be Sent is a proud subsidary of
-                <a herf="" target="blank" href="https://arvoequities.com"
+                <a ="" target="blank" href="https://arvoequities.com"
                   >Arvo Equities.</a
                 >
               </p>
@@ -688,8 +593,112 @@
     <!-- Footer End -->
 
     <!-- Js -->
-    <script src="assets/js/script.js"></script>
     <script>
+      let currentListId = "";
+      let editingIndex = null;
+
+      function handleDocumentUpload(containerId) {
+        const input = event.target;
+        const container = document.getElementById(containerId);
+        const file = input.files[0];
+
+        if (file) {
+          const fileUrl = URL.createObjectURL(file);
+          const div = document.createElement("div");
+          div.className =
+            "flex items-center justify-between bg-gray-100 p-2 rounded";
+          div.innerHTML = `
+              <p class="truncate w-3/4">${file.name}</p>
+              <button class="text-blue-500" onclick="showDetails('${fileUrl}')">
+                <i class="fas fa-eye"></i>
+              </button>
+              <button class="text-green-500" onclick="downloadFile('${fileUrl}')">
+               <i class="fas fa-download"></i>
+              </button>
+              <button class="text-red-500" onclick="this.parentElement.remove()">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+
+            `;
+          container.appendChild(div);
+          input.value = "";
+        }
+      }
+      function showDetails(fileUrl) {
+        window.open(fileUrl, "_blank");
+      }
+      function downloadFile(fileUrl) {
+        const link = document.createElement("a");
+        link.href = fileUrl;
+        link.download = fileUrl.split("/").pop(); // Extract the filename from the URL and set it as the download name
+        link.click(); // Trigger the download
+      }
+
+      function openPopup(listId, index = null) {
+        currentListId = listId;
+        editingIndex = index;
+        const popupModal = document.getElementById("popupModal");
+        const form = document.getElementById("popupForm");
+        if (index !== null) {
+          const list = document.getElementById(listId);
+          const item = list.children[index];
+          const name = item.querySelector(".recipient-name").innerText;
+          const mobile = item.querySelector(".recipient-mobile").innerText;
+          const email = item.querySelector(".recipient-email").innerText;
+          form.recipientName.value = name;
+          form.recipientMobile.value = mobile;
+          form.recipientEmail.value = email;
+        } else {
+          form.reset();
+        }
+        popupModal.classList.remove("hidden");
+      }
+
+      function closePopup() {
+        document.getElementById("popupModal").classList.add("hidden");
+        currentListId = "";
+        editingIndex = null;
+      }
+
+      document
+        .getElementById("popupForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = this.recipientName.value;
+          const mobile = this.recipientMobile.value;
+          const email = this.recipientEmail.value;
+
+          const list = document.getElementById(currentListId);
+          if (editingIndex !== null) {
+            const item = list.children[editingIndex];
+            item.querySelector(".recipient-name").innerText = name;
+            item.querySelector(".recipient-mobile").innerText = mobile;
+            item.querySelector(".recipient-email").innerText = email;
+          } else {
+            const li = document.createElement("li");
+            li.className =
+              "flex items-center justify-between space-x-2 bg-gray-100 p-2 rounded";
+            li.innerHTML = `
+              <div>
+                <p class="recipient-name font-semibold">${name}</p>
+                <p class="recipient-mobile text-sm text-gray-600">${mobile}</p>
+                <p class="recipient-email text-sm text-gray-600">${email}</p>
+              </div>
+              <div class="space-x-2">
+                <button class="text-blue-500" onclick="openPopup('${currentListId}', ${list.children.length})"><i class="fas fa-edit"></i></button>
+                <button class="text-red-500" onclick="deleteRecipient('${currentListId}', ${list.children.length})"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            `;
+            list.appendChild(li);
+          }
+          closePopup();
+        });
+
+      function deleteRecipient(listId, index) {
+        const list = document.getElementById(listId);
+        list.removeChild(list.children[index]);
+      }
+
       // Dropdown toggle
       const dropdownButton = document.getElementById("dropdownButton");
       const dropdownMenu = document.getElementById("dropdownMenu");
