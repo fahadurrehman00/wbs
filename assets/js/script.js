@@ -168,7 +168,7 @@ clients.forEach((client) => {
     <td class="border border-gray-300 p-2">${client.joiningDate}</td>
     <td class="border border-gray-300 p-2 items-center flex justify-center gap-4">
       <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
-<i class="fas fa-eye"></i> See Details
+<i class="fas fa-eye"></i>
 </button>
 <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
 <i class="fas fa-trash-alt"></i></button>
