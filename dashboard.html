@@ -22,7 +22,7 @@
       <div class="flex items-center">
         <img src="./assets/images/WBS-Logo.png" alt="Profile" class="h-14" />
       </div>
-      <div class="relative">
+      <div class="relative z-50">
         <button id="dropdownButton" class="flex items-center gap-2 transition">
           <img
             src="./assets/images/usere.png"
@@ -36,168 +36,275 @@
           id="dropdownMenu"
           class="hidden absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg overflow-hidden"
         >
-          <a
-            href="#"
-            id="myAccountLink"
-            class="block px-4 py-2 hover:bg-gray-200"
+          <!-- <a href="#" id="myAccountLink" class="block px-4 py-2 hover:bg-gray-200 pointer"
             >My Account</a
-          >
+          > -->
           <a href="#" class="block px-4 py-2 hover:bg-gray-200">Logout</a>
         </div>
       </div>
     </header>
 
-    <!-- Dasboard Start -->
-    <section class="bg-[#E2E8F0] p-6">
-      <!-- Welcome Section -->
-      <div class="text-center bg-[#3A5F8F] text-white py-4 rounded mb-6">
-        <h1 class="text-xl font-semibold">Welcome back, Josh</h1>
-      </div>
-
-      <!-- Main Grid Section -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- First Row -->
-        <div class="bg-white p-6 rounded shadow space-y-4">
-          <h2 class="text-lg font-semibold">Will</h2>
-          <div
-            class="border-2 border-dashed border-gray-300 rounded h-40 flex flex-col items-center justify-center text-gray-500 cursor-pointer"
-            onclick="document.getElementById('willUpload').click()"
-          >
-            <p>Drop your will here or click to upload.</p>
-            <p class="text-sm">Must be a Word or PDF document.</p>
-            <input
-              type="file"
-              id="willUpload"
-              accept=".pdf,.doc,.docx"
-              class="hidden"
-              onchange="handleDocumentUpload('willDocuments')"
-            />
-          </div>
-          <div id="willDocuments" class="space-y-2"></div>
-        </div>
-
-        <div class="bg-white p-6 rounded shadow space-y-4">
-          <h2 class="text-lg font-semibold">Will Recipients</h2>
-          <ul id="willRecipients" class="space-y-2">
-            <li class="flex items-center space-x-2">
-              <button
-                class="bg-blue-500 text-white px-3 py-1 rounded"
-                onclick="openPopup('willRecipients')"
-              >
-                +
-              </button>
-              <p>Click here to add recipient</p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Second Row -->
-        <div class="bg-white p-6 rounded shadow space-y-4">
-          <h2 class="text-lg font-semibold">Power of Attorney</h2>
-          <div id="poaContainer" class="space-y-4">
-            <div
-              class="border-2 border-dashed border-gray-300 rounded h-40 flex flex-col items-center justify-center text-gray-500 cursor-pointer"
-              onclick="document.getElementById('poaUpload').click()"
-            >
-              <p>
-                Drop your power of attorney document here or click to upload.
-              </p>
-              <p class="text-sm">Must be a Word or PDF document.</p>
-              <input
-                type="file"
-                id="poaUpload"
-                accept=".pdf,.doc,.docx"
-                class="hidden"
-                onchange="handleDocumentUpload('poaDocuments')"
-              />
-            </div>
-            <div id="poaDocuments" class="space-y-2"></div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded shadow space-y-4">
-          <h2 class="text-lg font-semibold">Power of Attorney Recipients</h2>
-          <ul id="poaRecipients" class="space-y-2">
-            <li class="flex items-center space-x-2">
-              <button
-                class="bg-blue-500 text-white px-3 py-1 rounded"
-                onclick="openPopup('poaRecipients')"
-              >
-                +
-              </button>
-              <p>Click here to add recipient</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Popup Modal -->
-      <div
-        id="popupModal"
-        class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden"
+    <div>
+      <!-- Dasboard Start -->
+      <main
+        id="dashboardContent"
+        class="flex-1 overflow-hidden tab-content active"
       >
-        <div class="bg-white rounded shadow p-6 w-80">
-          <h3 class="text-lg font-semibold mb-4">Add Recipient</h3>
-          <form id="popupForm" class="space-y-4">
-            <div>
-              <label for="recipientName" class="block text-sm font-medium"
-                >Name</label
+        <section class="bg-[#E2E8F0] p-6">
+          <!-- Welcome Section -->
+          <div class="text-center bg-[#3A5F8F] text-white py-4 rounded mb-6">
+            <h1 class="text-xl font-semibold">Welcome back, Josh</h1>
+          </div>
+
+          <!-- Main Grid Section -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- First Row -->
+            <div class="bg-white p-6 rounded shadow space-y-4">
+              <h2 class="text-lg font-semibold">Will</h2>
+              <div
+                class="border-2 border-dashed border-gray-300 rounded h-40 flex flex-col items-center justify-center text-gray-500 cursor-pointer"
+                onclick="document.getElementById('willUpload').click()"
               >
+                <p>Drop your will here or click to upload.</p>
+                <p class="text-sm">Must be a Word or PDF document.</p>
+                <input
+                  type="file"
+                  id="willUpload"
+                  accept=".pdf,.doc,.docx"
+                  class="hidden"
+                  onchange="handleDocumentUpload('willDocuments')"
+                />
+              </div>
+              <div id="willDocuments" class="space-y-2"></div>
+            </div>
+
+            <div class="bg-white p-6 rounded shadow space-y-4">
+              <h2 class="text-lg font-semibold">Will Recipients</h2>
+              <ul id="willRecipients" class="space-y-2">
+                <li class="flex items-center space-x-2">
+                  <button
+                    class="bg-blue-500 text-white px-3 py-1 rounded"
+                    onclick="openPopup('willRecipients')"
+                  >
+                    +
+                  </button>
+                  <p>Click here to add recipient</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Second Row -->
+            <div class="bg-white p-6 rounded shadow space-y-4">
+              <h2 class="text-lg font-semibold">Power of Attorney</h2>
+              <div id="poaContainer" class="space-y-4">
+                <div
+                  class="border-2 border-dashed border-gray-300 rounded h-40 flex flex-col items-center justify-center text-gray-500 cursor-pointer"
+                  onclick="document.getElementById('poaUpload').click()"
+                >
+                  <p>
+                    Drop your power of attorney document here or click to
+                    upload.
+                  </p>
+                  <p class="text-sm">Must be a Word or PDF document.</p>
+                  <input
+                    type="file"
+                    id="poaUpload"
+                    accept=".pdf,.doc,.docx"
+                    class="hidden"
+                    onchange="handleDocumentUpload('poaDocuments')"
+                  />
+                </div>
+                <div id="poaDocuments" class="space-y-2"></div>
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded shadow space-y-4">
+              <h2 class="text-lg font-semibold">
+                Power of Attorney Recipients
+              </h2>
+              <ul id="poaRecipients" class="space-y-2">
+                <li class="flex items-center space-x-2">
+                  <button
+                    class="bg-blue-500 text-white px-3 py-1 rounded"
+                    onclick="openPopup('poaRecipients')"
+                  >
+                    +
+                  </button>
+                  <p>Click here to add recipient</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Popup Modal -->
+          <div
+            id="popupModal"
+            class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden"
+          >
+            <div class="bg-white rounded shadow p-6 w-80">
+              <h3 class="text-lg font-semibold mb-4">Add Recipient</h3>
+              <form id="popupForm" class="space-y-4">
+                <div>
+                  <label for="recipientName" class="block text-sm font-medium"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="recipientName"
+                    class="w-full border-gray-300 rounded p-2"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="recipientMobile" class="block text-sm font-medium"
+                    >Mobile Number</label
+                  >
+                  <input
+                    type="text"
+                    id="recipientMobile"
+                    class="w-full border-gray-300 rounded p-2"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="recipientEmail" class="block text-sm font-medium"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="recipientEmail"
+                    class="w-full border-gray-300 rounded p-2"
+                    required
+                  />
+                </div>
+                <div class="flex justify-end space-x-4">
+                  <button
+                    type="button"
+                    class="bg-gray-300 px-4 py-2 rounded"
+                    onclick="closePopup()"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded"
+                  >
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- Dasboard End -->
+      <!-- My account Start -->
+      <!-- My Account Section -->
+      <!-- <main id="myAccountSection" class="flex-1 p-6 tab-content">
+        <section class="bg-white p-6 rounded-lg shadow">
+          <div class="flex flex-col items-center mb-6">
+            <div class="relative">
+              <img
+                id="profileImage"
+                src="./assets/images/usere.png"
+                alt="Profile"
+                class="w-24 h-24 rounded-full object-cover"
+              />
+              <button
+                id="editProfileImage"
+                class="absolute top-0 left-0 bg-gray-800 text-white text-sm px-2 py-1 rounded-full"
+              >
+                Edit
+              </button>
+              <input id="fileInput" type="file" class="hidden" />
+            </div>
+          </div>
+
+          <div id="profileFields" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-600">First Name</label>
               <input
                 type="text"
-                id="recipientName"
-                class="w-full border-gray-300 rounded p-2"
-                required
+                id="firstName"
+                class="w-full p-2 border border-gray-300 rounded-lg"
+                disabled
               />
             </div>
             <div>
-              <label for="recipientMobile" class="block text-sm font-medium"
-                >Mobile Number</label
-              >
+              <label class="block text-gray-600">Last Name</label>
               <input
                 type="text"
-                id="recipientMobile"
-                class="w-full border-gray-300 rounded p-2"
-                required
+                id="lastName"
+                class="w-full p-2 border border-gray-300 rounded-lg"
+                disabled
               />
             </div>
             <div>
-              <label for="recipientEmail" class="block text-sm font-medium"
-                >Email</label
-              >
+              <label class="block text-gray-600">Email</label>
               <input
                 type="email"
-                id="recipientEmail"
-                class="w-full border-gray-300 rounded p-2"
-                required
+                id="email"
+                class="w-full p-2 border border-gray-300 rounded-lg"
+                disabled
               />
             </div>
-            <div class="flex justify-end space-x-4">
-              <button
-                type="button"
-                class="bg-gray-300 px-4 py-2 rounded"
-                onclick="closePopup()"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                class="bg-blue-500 text-white px-4 py-2 rounded"
-              >
-                Save
-              </button>
+            <div>
+              <label class="block text-gray-600">Phone Number</label>
+              <input
+                type="text"
+                id="phoneNumber"
+                class="w-full p-2 border border-gray-300 rounded-lg"
+                disabled
+              />
             </div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Dasboard End -->
+            <div>
+              <label class="block text-gray-600">Gender</label>
+              <select
+                id="gender"
+                class="w-full p-2 border border-gray-300 rounded-lg"
+                disabled
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-gray-600">Country</label>
+              <input
+                type="text"
+                id="country"
+                class="w-full p-2 border border-gray-300 rounded-lg"
+                disabled
+              />
+            </div>
+            <div>
+              <label class="block text-gray-600">Date of Birth</label>
+              <input
+                type="date"
+                id="dob"
+                class="w-full p-2 border border-gray-300 rounded-lg"
+                disabled
+              />
+            </div>
+          </div>
+          <div class="text-right mt-6">
+            <button
+              id="editProfileButton"
+              class="bg-blue-500 text-white px-4 py-2 rounded-lg"
+            >
+              Edit
+            </button>
+          </div>
+        </section>
+      </main> -->
+      <!-- My account End -->
+    </div>
 
     <!-- Contact Start -->
-    <section id="contact" class="py-20 bg-gray-50">
+    <section id="contact" class="py-20 bg-gray-100">
       <div class="container">
         <div class="grid lg:grid-cols-3 gap-6 items-center">
+          <!-- Contact Info -->
           <div>
             <div>
               <span
@@ -205,8 +312,8 @@
                 >Contact Us</span
               >
             </div>
-            <h2 class="text-3xl md:text-4xl/tight font-semibold mt-4">
-              We're open to talk to good people.
+            <h2 class="text-3xl md:text-4xl font-semibold mt-4 text-gray-800">
+              Your Questions, Our Support
             </h2>
 
             <div
@@ -219,10 +326,12 @@
               </div>
               <div>
                 <h5 class="text-base text-muted font-medium mb-1">
-                  123 King Street, London W60 10250
+                  255 South Orange Avenue, Suite 104 - 1715, Orlando, FL 32801
                 </h5>
-                <a href="#" class="text-xs text-primary font-bold uppercase"
-                  >See more</a
+                <a
+                  href="#"
+                  class="text-xs text-primary font-bold uppercase hover:text-primaryDark"
+                  >Address</a
                 >
               </div>
             </div>
@@ -237,10 +346,12 @@
               </div>
               <div>
                 <h5 class="text-base text-muted font-medium mb-1">
-                  support@willbesent.com
+                  Help@WillBeSent.com
                 </h5>
-                <a href="#" class="text-xs text-primary font-bold uppercase"
-                  >Say hello</a
+                <a
+                  href="#"
+                  class="text-xs text-primary font-bold uppercase hover:text-primaryDark"
+                  >Email</a
                 >
               </div>
             </div>
@@ -255,76 +366,81 @@
               </div>
               <div>
                 <h5 class="text-base text-muted font-medium mb-1">
-                  (+01) 1234 5678 00
+                  +1 (833) 462-2786
                 </h5>
-                <a href="#" class="text-xs text-primary font-bold uppercase"
-                  >call now</a
+                <a
+                  href="#"
+                  class="text-xs text-primary font-bold uppercase hover:text-primaryDark"
+                  >Phone</a
                 >
               </div>
             </div>
           </div>
 
+          <!-- Form Section -->
           <div class="lg:col-span-2 lg:ms-24">
-            <div class="p-6 md:p-12 rounded-md shadow-lg bg-white">
+            <div
+              class="p-8 md:p-12 rounded-lg shadow-xl bg-white border border-gray-200"
+            >
               <form>
                 <div class="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label
                       for="formFirstName"
-                      class="block text-sm/normal font-semibold text-black mb-2"
+                      class="block text-sm font-semibold text-black mb-2"
                       >First Name</label
                     >
                     <input
                       type="text"
-                      class="block w-full text-sm rounded-md py-3 px-4 border-gray-200 focus:border-gray-300 focus:ring-transparent"
+                      class="block w-full text-sm rounded-md py-3 px-4 border border-gray-200 focus:border-gray-300 focus:ring-primary"
                       id="formFirstName"
                       placeholder="Your first name..."
-                      required=""
+                      required
                     />
                   </div>
 
                   <div>
                     <label
                       for="formLastName"
-                      class="block text-sm/normal font-semibold text-black mb-2"
+                      class="block text-sm font-semibold text-black mb-2"
                       >Last Name</label
                     >
                     <input
                       type="text"
-                      class="block w-full text-sm rounded-md py-3 px-4 border-gray-200 focus:border-gray-300 focus:ring-transparent"
+                      class="block w-full text-sm rounded-md py-3 px-4 border border-gray-200 focus:border-gray-300 focus:ring-primary"
                       id="formLastName"
-                      placeholder="Last first name..."
-                      required=""
+                      placeholder="Your last name..."
+                      required
                     />
                   </div>
 
                   <div>
                     <label
                       for="formEmail"
-                      class="block text-sm/normal font-semibold text-black mb-2"
+                      class="block text-sm font-semibold text-black mb-2"
                       >Email Address</label
                     >
                     <input
                       type="email"
-                      class="block w-full text-sm rounded-md py-3 px-4 border-gray-200 focus:border-gray-300 focus:ring-transparent"
+                      class="block w-full text-sm rounded-md py-3 px-4 border border-gray-200 focus:border-gray-300 focus:ring-primary"
                       id="formEmail"
                       placeholder="Your email..."
-                      required=""
+                      required
                     />
                   </div>
 
                   <div>
                     <label
                       for="formPhone"
-                      class="block text-sm/normal font-semibold text-black mb-2"
+                      class="block text-sm font-semibold text-black mb-2"
                       >Phone Number</label
                     >
                     <input
                       type="text"
-                      class="block w-full text-sm rounded-md py-3 px-4 border-gray-200 focus:border-gray-300 focus:ring-transparent"
+                      class="block w-full text-sm rounded-md py-3 px-4 border border-gray-200 focus:border-gray-300 focus:ring-primary"
                       id="formPhone"
-                      placeholder="Type phone number..."
-                      required=""
+                      placeholder="Your phone number..."
+                      required
                     />
                   </div>
 
@@ -332,25 +448,25 @@
                     <div class="mb-4">
                       <label
                         for="formMessages"
-                        class="block text-sm/normal font-semibold text-black mb-2"
-                        >Messages</label
+                        class="block text-sm font-semibold text-black mb-2"
+                        >Message</label
                       >
                       <textarea
-                        class="block w-full text-sm rounded-md py-3 px-4 border-gray-200 focus:border-gray-300 focus:ring-transparent"
+                        class="block w-full text-sm rounded-md py-3 px-4 border border-gray-200 focus:border-gray-300 focus:ring-primary"
                         id="formMessages"
                         rows="4"
-                        placeholder="Type messages..."
-                        required=""
+                        placeholder="Your message..."
+                        required
                       ></textarea>
                     </div>
                   </div>
                 </div>
-                <div class="mt-4">
+                <div class="mt-6">
                   <button
                     type="submit"
-                    class="py-2 px-6 rounded-md text-base items-center justify-center border border-primary bg-primary hover:bg-primaryDark transition-all duration-500 font-medium"
+                    class="py-3 px-8 rounded-md text-white text-base font-medium bg-gradient-to-r from-[#F4A261] to-[#3A5F8F] hover:bg-gradient-to-r hover:from-[#3A5F8F] hover:to-[#F4A261] transition-all duration-300 ease-in-out"
                   >
-                    Send Messages <i class="mdi mdi-send ms-1"></i>
+                    Send Message <i class="mdi mdi-send ms-2"></i>
                   </button>
                 </div>
               </form>
@@ -362,19 +478,23 @@
     <!-- Contact End -->
 
     <!-- Footer Start -->
-    <footer class="bg-[#17243A]">
+    <footer class="bg-[#3A5F8F]">
       <div class="container">
-        <div
-          class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 pb-16 pt-16"
-        >
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 py-4">
           <div class="col-span-full lg:col-span-2">
             <div class="max-w-2xl mx-auto">
               <div class="flex items-center">
-                <img src="assets/images/logo.png" alt="" class="h-10 me-5" />
+                <img
+                  src="assets/images/WBS-Logo.png"
+                  alt=""
+                  class="h-10 me-5"
+                />
               </div>
               <p class="text-gray-300 max-w-xs mt-6">
-                This may include the company's address, phone number, email
-                address, and links to social media profiles.
+                Will Be Sent is a proud subsidary of
+                <a herf="" target="blank" href="https://arvoequities.com"
+                  >Arvo Equities.</a
+                >
               </p>
             </div>
 
@@ -398,7 +518,7 @@
                   <rect width="20" height="16" x="2" y="4" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
-                Info@willbesent.com
+                Help@WillBeSent.com
               </a>
 
               <a
@@ -421,22 +541,15 @@
                     d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
                   />
                 </svg>
-                (888) 253 145 148
+                + 1 (833) 462 2786
               </a>
             </div>
           </div>
 
           <div class="col-span-1">
-            <h4 class="font-semibold text-gray-100 uppercase">Company</h4>
+            <h4 class="font-semibold text-gray-100 uppercase">Pages</h4>
 
             <div class="mt-6 grid space-y-3">
-              <p>
-                <a
-                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
-                  href="#"
-                  >About</a
-                >
-              </p>
               <p>
                 <a
                   class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
@@ -448,7 +561,14 @@
                 <a
                   class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
                   href="#"
-                  >Portfolio</a
+                  >Pricing</a
+                >
+              </p>
+              <p>
+                <a
+                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
+                  href="#"
+                  >Reviews</a
                 >
               </p>
               <p>
@@ -467,75 +587,16 @@
               </p>
             </div>
           </div>
-
           <div class="col-span-1">
-            <h4 class="font-semibold text-gray-100 uppercase">Product</h4>
+            <h4 class="font-semibold text-gray-100 uppercase">Policies</h4>
 
             <div class="mt-6 grid space-y-3">
               <p>
                 <a
                   class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
                   href="#"
-                  >Services</a
+                  >Privacy Policy</a
                 >
-              </p>
-              <p>
-                <a
-                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
-                  href="#"
-                  >About Us</a
-                >
-              </p>
-              <p>
-                <a
-                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
-                  href="#"
-                  >News & Stories</a
-                >
-              </p>
-              <p>
-                <a
-                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
-                  href="#"
-                  >Roadmap</a
-                >
-              </p>
-            </div>
-          </div>
-
-          <div class="col-span-1">
-            <h4 class="font-semibold text-gray-100 uppercase">
-              Important Links
-            </h4>
-
-            <div class="mt-6 grid space-y-3">
-              <p>
-                <a
-                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
-                  href="#"
-                  >Our Journeys</a
-                >
-              </p>
-              <p>
-                <a
-                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
-                  href="#"
-                  >Roadmap</a
-                >
-              </p>
-              <p>
-                <a
-                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
-                  href="#"
-                  >Pricing Plans</a
-                >
-              </p>
-              <p>
-                <a
-                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
-                  href="#"
-                  >Privacy Policy
-                </a>
               </p>
               <p>
                 <a
@@ -544,12 +605,19 @@
                   >Terms & Conditions</a
                 >
               </p>
+              <p>
+                <a
+                  class="inline-flex gap-x-2 text-base text-gray-300 hover:text-gray-400 transition-all duration-300"
+                  href="#"
+                  >Arvo Equities</a
+                >
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="py-4 bg-[#1C2940]">
+      <div class="bg-[#F4A261]">
         <!-- 1B283F -->
         <div class="container">
           <div class="flex justify-between items-center">
@@ -557,12 +625,12 @@
               <script>
                 document.write(new Date().getFullYear());
               </script>
-              © WBS - <a href="#">willbesent.com</a>
+              © Will Be Sent. <a href="willbesent.com">All Rights Reserved.</a>
             </p>
 
-            <div>
+            <div class="flex gap-2">
               <a
-                class="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-md border border-transparent text-white hover:bg-primary transition-all duration-300"
+                class="p-2 text-sm font-semibold rounded-md text-white hover:bg-[#3A5F8F] transition-all duration-300"
                 href="#"
               >
                 <svg
@@ -579,7 +647,7 @@
                 </svg>
               </a>
               <a
-                class="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-md border border-transparent text-white hover:bg-primary transition-all duration-300"
+                class="p-2 text-sm font-semibold rounded-md text-white hover:bg-[#3A5F8F] transition-all duration-300"
                 href="#"
               >
                 <svg
@@ -596,7 +664,7 @@
                 </svg>
               </a>
               <a
-                class="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-md border border-transparent text-white hover:bg-primary transition-all duration-300"
+                class="p-2 text-sm font-semibold rounded-md text-white hover:bg-[#3A5F8F] transition-all duration-300"
                 href="#"
               >
                 <svg
@@ -612,40 +680,6 @@
                   />
                 </svg>
               </a>
-              <a
-                class="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-md border border-transparent text-white hover:bg-primary transition-all duration-300"
-                href="#"
-              >
-                <svg
-                  class="flex-shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-                  />
-                </svg>
-              </a>
-              <a
-                class="size-8 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-md border border-transparent text-white hover:bg-primary transition-all duration-300"
-                href="#"
-              >
-                <svg
-                  class="flex-shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M3.362 10.11c0 .926-.756 1.681-1.681 1.681S0 11.036 0 10.111C0 9.186.756 8.43 1.68 8.43h1.682v1.68zm.846 0c0-.924.756-1.68 1.681-1.68s1.681.756 1.681 1.68v4.21c0 .924-.756 1.68-1.68 1.68a1.685 1.685 0 0 1-1.682-1.68v-4.21zM5.89 3.362c-.926 0-1.682-.756-1.682-1.681S4.964 0 5.89 0s1.68.756 1.68 1.68v1.682H5.89zm0 .846c.924 0 1.68.756 1.68 1.681S6.814 7.57 5.89 7.57H1.68C.757 7.57 0 6.814 0 5.89c0-.926.756-1.682 1.68-1.682h4.21zm6.749 1.682c0-.926.755-1.682 1.68-1.682.925 0 1.681.756 1.681 1.681s-.756 1.681-1.68 1.681h-1.681V5.89zm-.848 0c0 .924-.755 1.68-1.68 1.68A1.685 1.685 0 0 1 8.43 5.89V1.68C8.43.757 9.186 0 10.11 0c.926 0 1.681.756 1.681 1.68v4.21zm-1.681 6.748c.926 0 1.682.756 1.682 1.681S11.036 16 10.11 16s-1.681-.756-1.681-1.68v-1.682h1.68zm0-.847c-.924 0-1.68-.755-1.68-1.68 0-.925.756-1.681 1.68-1.681h4.21c.924 0 1.68.756 1.68 1.68 0 .926-.756 1.681-1.68 1.681h-4.21z"
-                  />
-                </svg>
-              </a>
             </div>
           </div>
         </div>
@@ -655,5 +689,13 @@
 
     <!-- Js -->
     <script src="assets/js/script.js"></script>
+    <script>
+      // Dropdown toggle
+      const dropdownButton = document.getElementById("dropdownButton");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      dropdownButton.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("hidden");
+      });
+    </script>
   </body>
 </html>

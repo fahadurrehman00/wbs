@@ -1,4 +1,4 @@
-// Dashboard
+// Admin Dashboard
 const sidebar = document.getElementById("sidebar");
 const sidebarToggle = document.getElementById("sidebarToggle");
 const toggleArrow = document.getElementById("toggleArrow");
@@ -261,10 +261,4 @@ function deleteRecipient(listId, index) {
   list.removeChild(list.children[index]);
 }
 
-// Dropdown toggle
-const dropdownButton = document.getElementById("dropdownButton");
-const dropdownMenu = document.getElementById("dropdownMenu");
-dropdownButton.addEventListener("click", () => {
-  dropdownMenu.classList.toggle("hidden");
-});
 
